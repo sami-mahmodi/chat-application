@@ -1,17 +1,18 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDRG8b6vT-tU2K45lhsMgTLh1dAbrEZfu4",
-  authDomain: "chat-application-847b6.firebaseapp.com",
-  projectId: "chat-application-847b6",
-  storageBucket: "chat-application-847b6.appspot.com",
-  messagingSenderId: "19853259396",
-  appId: "1:19853259396:web:5a29bd6182061110e248d1",
-  measurementId: "G-6B845W25QB"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const firestore = firebase.firestore();
 
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+export { auth, firestore };
