@@ -34,19 +34,23 @@ const Chat: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className='p-8 flex flex-col justify-center '>
       <div>
         {messages.map((message) => (
-          <div key={message.id}>{message.text}</div>
+          <div key={message.id} className='p-4 rounded-md bg-sky-900 my-2 uppercase'>{message.text}</div>
         ))}
       </div>
       <input
-      className='text-black'
+      className='outline-none text-black py-2 px-2 rounded-md w-full my-4'
         type="text"
+        placeholder='Write Your Message..'
         value={newMessage}
         onChange={(e) => setNewMessage(e.target.value)}
       />
-      <button onClick={sendMessage}>Send</button>
+      <div className='flex justify-center'>
+
+      <button onClick={sendMessage} className='bg-sky-500 hover:bg-sky-700 px-8 py-2 rounded-md w-28'>send</button>
+      </div>
     </div>
   );
 };
