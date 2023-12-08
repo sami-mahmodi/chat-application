@@ -18,15 +18,14 @@ const signInWithGoogle = async (): Promise<UserType | null> => {
     if (!user) {
       return null;
     }
+    
 
     const { displayName, email, phoneNumber, uid } = user;
-
-    // Ensure that name and lastname are always strings
     const [name, lastname] = displayName ? displayName.split(' ') : ['', ''];
 
     const userData: UserType = {
-      name: name || '', // If name is null or undefined, set it to an empty string
-      lastname: lastname || '', // If lastname is null or undefined, set it to an empty string
+      name: name || '', 
+      lastname: lastname || '', 
       email,
       phoneNumber: phoneNumber || '',
     };
